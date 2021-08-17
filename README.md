@@ -1,6 +1,6 @@
 # Validação de entrada de dados e respostas de erro no ASP.NET
 
-Validação dos dados de entrada é parte essencial no desenvolvimento de software. O framework ASP.<span>NET</span> provê um conjunto de funcionalidades que auxiliam os desenvodores garantir que as APIs só processem dados que possuem valores que atendam as regras da aplicação. Nesse texto será discutido as formas de validação do ASP.<span>NET</span> e o formato das mensagens de erro retornadas. Serão tratados erros de tipos inválidos e a validação dos modelos usando a funcionalidade de `DataAnnotations` do ASP.<span>NET</span>. Além disso, será mostrado como customizar o formato de resposta. Os exemplos de código foram desenvolvidos usando a versão 5 do ASP.<span>NET</span>.
+Validação dos dados de entrada é parte essencial no desenvolvimento de software. O framework ASP.<span>NET</span> provê um conjunto de funcionalidades que auxiliam os desenvedores garantir que as APIs só processem dados que possuem valores que atendam as regras da aplicação. Nesse texto será discutido as formas de validação do ASP.<span>NET</span> e o formato das mensagens de erro retornadas. Serão tratados erros de tipos inválidos e a validação dos modelos usando a funcionalidade de `DataAnnotations` do ASP.<span>NET</span>. Além disso, será mostrado como customizar o formato de resposta. Os exemplos de código foram desenvolvidos usando a versão 5 do ASP.<span>NET</span>.
 
 ## Erros de Model Binding
 
@@ -85,7 +85,8 @@ public class ExampleController : ControllerBase
 ```
 
 E ao fazer a requisição com o valor inválido obtemos o mesmo erro quando usamos a verificação do `ModelState`. Isso ocorre porque o filtro `ModelStateInvalidFilter` é adicionado a todos os Controllers que são anotados com o `ApiControllerAttribute`.
-Além da vaidação do `ModelState`, o `ApiControllerAttribute` trás outras informações de erro no seu resultado:
+
+Além da validação do `ModelState`, o `ApiControllerAttribute` trás outras informações de erro no seu resultado:
 
 ```json
 {
@@ -107,7 +108,7 @@ Por padrão o atributo tem como resposta o formato acima contendo:
 - **traceId**: o traceId da requisição. Por padrão, o ASP.NET 5 utiliza o formato definido [pela recomendação da W3C](https://www.w3.org/TR/trace-context/). Você pode encontrar mais informações sobre o traceId e o trace context [aqui](https://dev.to/luizhlelis/using-w3c-trace-context-standard-in-distributed-tracing-3743);
 - **errors**: uma lista de erros contendo o erro de validação do modelo.
 
-É possível também decorar o assembly com o `ApiControllerAttribute`. Isso pode ser feito decorando a declaração do namespace que contém a classe `Startup`.
+É possível também decorar o assembly com o `ApiControllerAttribute`. Isso pode ser feito decorando a declaração do namespace que contém a classe `Startup`. Dessa forma, o comportamento do `ApiControllerAttribute` será aplicado a todos os controllers do assembly 
 
 ```c#
 [assembly: ApiController]
@@ -156,7 +157,7 @@ Realizando uma requisição para a nova rota de POST com o body vazio obtemos o 
 }
 ```
 
-Existem vários outros atributos (a lista completa pode ser vista [aqui](https://docs.microsoft.com/pt-br/dotnet/api/system.componentmodel.dataannotations?view=net-5.0)) e também possível extender essa funcionalidade criando atributos customizados herdando a classe `ValidationAttribute` como apresentado no exemplo:
+Existem vários outros atributos (a lista completa pode ser vista [aqui](https://docs.microsoft.com/pt-br/dotnet/api/system.componentmodel.dataannotations?view=net-5.0)) e também é possível extender essa funcionalidade criando atributos customizados herdando a classe `ValidationAttribute` como apresentado no exemplo:
 
 ```c#
 public class ExampleRequest
@@ -233,7 +234,7 @@ O código acima simplifica o retorno da API, trazendo apenas a lista de erros e 
 
 ## Conclusão
 
-O ASP.NET possui funcionalidades para ajudar os desenvolvedores criarem APIs mais robustas aplicando validação de dados de entrada. Além disso, existem ótimas APIs como o Fluent Validation que permite mais liberdade para criação de validadores de modelos mais inteligentes. O uso do atributo `ApiController` do ASP.<span>NET</span> incrementa as APIs adicionando funcionalidades como a resposta 400 automática para erros de validação padrão. No entanto, se desejado, é possível customizar o resultado de forma simples usando o `InvalidModelStateResponseFactory`.
+O ASP.NET possui funcionalidades para ajudar os desenvolvedores criarem APIs mais robustas aplicando validação de dados de entrada. Além disso, existem ótimas bibliotecas como o Fluent Validation que permite mais liberdade para criação de validadores de modelos mais inteligentes. O uso do atributo `ApiController` do ASP.<span>NET</span> incrementa as APIs adicionando funcionalidades como a resposta 400 automática para erros de validação padrão. No entanto, se desejado, é possível customizar o resultado de forma simples usando o `InvalidModelStateResponseFactory`.
 
 
 ## Referências
