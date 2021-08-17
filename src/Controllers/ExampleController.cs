@@ -1,9 +1,9 @@
+using ExampleApi.Configuration;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 
 namespace ExampleApi.Controllers
 { 
-    [ApiController]
     [Route("[controller]")]
     public class ExampleController : ControllerBase
     {
@@ -27,5 +27,13 @@ namespace ExampleApi.Controllers
     {
         [Required]
         public string Name { get; set; }
+        [StringLength(1000)]
+        public string Description { get; set; }
+        [Range(1, 100)]
+        public int SomeValue { get; set; }
+        [EmailAddress]
+        public string Email { get; set; }
+        [IsEven]
+        public int EvenNumber { get; set; }
     }
 }
