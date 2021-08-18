@@ -66,7 +66,7 @@ Isso previne que a aplicação processe requisições com dados inválidos. Mas 
 
 ### [ApiController]
 
-O atributo do ASP.<span>NET</span> [ApiControllerAttribute](https://docs.microsoft.com/en-us/aspnet/core/web-api/?view=aspnetcore-5.0#apicontroller-attribute) pode ser aplicado à Controllers e trás algumas funcionalidades. Entre elas, ele faz a validação automática dos dados de entrada e retorna um erro 400 de maneira similar à verificação do `ModelState`. Alterando o Controller de exemplo:
+O atributo do ASP.<span>NET</span> [ApiControllerAttribute](https://docs.microsoft.com/en-us/aspnet/core/web-api/?view=aspnetcore-5.0#apicontroller-attribute) pode ser aplicado à Controllers e traz algumas funcionalidades. Entre elas, ele faz a validação automática dos dados de entrada e retorna um erro 400 de maneira similar à verificação do `ModelState`. Alterando o Controller de exemplo:
 
 ```c#
 [ApiController]
@@ -86,7 +86,7 @@ public class ExampleController : ControllerBase
 
 E ao fazer a requisição com o valor inválido obtemos o mesmo erro quando usamos a verificação do `ModelState`. Isso ocorre porque o filtro `ModelStateInvalidFilter` é adicionado a todos os Controllers que são anotados com o `ApiControllerAttribute`.
 
-Além da validação do `ModelState`, o `ApiControllerAttribute` trás outras informações de erro no seu resultado:
+Além da validação do `ModelState`, o `ApiControllerAttribute` traz outras informações de erro no seu resultado:
 
 ```json
 {
