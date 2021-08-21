@@ -1,6 +1,6 @@
 # Validação de entrada de dados e respostas de erro no ASP.NET
 
-Validação dos dados de entrada é parte essencial no desenvolvimento de software. O framework ASP.<span>NET</span> provê um conjunto de funcionalidades que auxiliam os desenvedores garantir que as APIs só processem dados que possuem valores que atendam as regras da aplicação. Nesse texto será discutido as formas de validação do ASP.<span>NET</span> e o formato das mensagens de erro retornadas. Serão tratados erros de tipos inválidos e a validação dos modelos usando a funcionalidade de `DataAnnotations` do ASP.<span>NET</span>. Além disso, será mostrado como customizar o formato de resposta. Os exemplos de código foram desenvolvidos usando a versão 5 do ASP.<span>NET</span>.
+Validação dos dados de entrada é parte essencial no desenvolvimento de software. O framework ASP.<span>NET</span> provê um conjunto de funcionalidades que auxiliam os desenvedores garantir que as APIs só processem dados que possuem valores que atendam as regras da aplicação. Nesse texto serão discutidas as formas de validação do ASP.<span>NET</span> e o formato das mensagens de erro retornadas. Serão tratados erros de tipos inválidos e a validação dos modelos usando a funcionalidade de `DataAnnotations` do ASP.<span>NET</span>. Além disso, será mostrado como customizar o formato de resposta. Os exemplos de código foram desenvolvidos usando a versão 5 do ASP.<span>NET</span>.
 
 ## Erros de Model Binding
 
@@ -157,7 +157,7 @@ Realizando uma requisição para a nova rota de POST com o body vazio obtemos o 
 }
 ```
 
-Existem vários outros atributos (a lista completa pode ser vista [aqui](https://docs.microsoft.com/pt-br/dotnet/api/system.componentmodel.dataannotations?view=net-5.0)) e também é possível extender essa funcionalidade criando atributos customizados herdando a classe `ValidationAttribute` como apresentado no exemplo:
+Existem vários outros atributos (a lista completa pode ser vista [aqui](https://docs.microsoft.com/pt-br/dotnet/api/system.componentmodel.dataannotations?view=net-5.0)) e também é possível estender essa funcionalidade criando atributos customizados herdando a classe `ValidationAttribute` como apresentado no exemplo:
 
 ```c#
 public class ExampleRequest
